@@ -34,7 +34,7 @@ defmodule AvroEx.Encode do
   defp do_encode(%Primitive{type: :float}, %Context{}, float, _) when is_float(float),
     do: <<float::little-float-size(32)>>
 
-  defp do_encode(%Primitive{type: :double}, %Context{}, double, _) when is_float(double),
+  defp do_encode(%Primitive{type: :double}, %Context{}, double, _) when is_float(double) or is_integer(double),
     do: <<double::little-float-size(64)>>
 
   defp do_encode(
